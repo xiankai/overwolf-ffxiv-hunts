@@ -15,10 +15,10 @@
 		"windows":{
 			"MainWindow":{
 				"file":"index.html",
-				"transparent":true,
+				"transparent":false,
 				"resizable":true,
-				"size":{"width":700, "height":500},
-				"min_size":{"width":700, "height":200}
+				"size":{"width":720, "height":500},
+				"min_size":{"width":720, "height":200}
 			}
 		}
 	}

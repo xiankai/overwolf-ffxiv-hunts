@@ -12,19 +12,10 @@
 		<script src="app.js"></script>
 	</head>
 	<body ng-app="overwolf" ng-controller="table as vm">
-		<div class="resizeGrip" id="resizeGripTopLeft" onmousedown="dragResize('TopLeft');"></div>
-		<div class="resizeGrip" id="resizeGripTop" onmousedown="dragResize('Top');"></div>
-		<div class="resizeGrip" id="resizeGripTopRight" onmousedown="dragResize('TopRight');"></div>
-		<div class="resizeGrip" id="resizeGripRight" onmousedown="dragResize('Right');"></div>
-		<div class="resizeGrip" id="resizeGripBottomRight" onmousedown="dragResize('BottomRight');"></div>
-		<div class="resizeGrip" id="resizeGripBottom" onmousedown="dragResize('Bottom');"></div>
-		<div class="resizeGrip" id="resizeGripBottomLeft" onmousedown="dragResize('BottomLeft');"></div>
-		<div class="resizeGrip" id="resizeGripLeft" onmousedown="dragResize('Left');"></div>
 		<div id="content">
-			<i class="glyphicon glyphicon-remove" id="close-icon" onclick="closeWindow();"></i>
 			<table class="table table-condensed">
 				<thead>
-					<tr onmousedown="dragMove();">
+					<tr>
 						<th ng-repeat="(key, value) in vm.headers">
 							<a ng-click="vm.sortType = key; vm.sortReverse = !vm.sortReverse">
 								{{ value }}
@@ -84,7 +75,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody onmousedown="dragMove();">
+				<tbody>
 					<tr 
 						ng-repeat="hunt in vm.hunts | filter:vm.input:strict | orderBy:vm.sortType:vm.sortReverse "
 						ng-class="{
