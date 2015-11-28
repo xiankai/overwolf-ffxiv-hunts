@@ -32,9 +32,17 @@ function closeWindow(){
 	.filter('shortName', ShortNameFilter)
 	.controller('table', Controller)
 
-	Controller.$inject = ['$http', '$interval'];
-	function Controller($http, $interval) {
+	Controller.$inject = ['$scope', '$http', '$interval'];
+	function Controller($scope, $http, $interval) {
 		var vm = this;
+
+		vm.headers = {
+			name: 'Name',
+			area: 'Location',
+			rank: 'Rank',
+			type: 'Status',
+			time: 'Time'
+		}
 
 		var locationMap = {
 			'iterative': {
@@ -116,17 +124,17 @@ function closeWindow(){
 		var currentInterval;
 		function countdown() {
 			currentInterval = $interval(function() {
-				vm.hunts.map(function(hunt) {
+				vm.hunts = vm.hunts.map(function(hunt) {
 					switch (hunt.type) {
 						case 'open': 
 						case 'no info':
-							hunt.time.add(1, 'second');
-							break;
+							hunt.time++;
+							return hunt;
 						case 'awaiting':
-							hunt.time.subtract(1, 'second');
-							break;
+							hunt.time--;
+							return hunt;
 					}
-				})
+				});
 			}, 1000);
 		}
 
@@ -166,7 +174,7 @@ function closeWindow(){
 
 			return {
 				type: type,
-				duration: duration
+				duration: parseInt(duration.asSeconds())
 			}
 		}
 
@@ -178,7 +186,7 @@ function closeWindow(){
 
 	function MomentFilter() {
 		return function(duration) {
-			return moment.utc(duration.asMilliseconds()).format("HH:mm:ss");
+			return moment.duration(duration, 'seconds').format("d.hh:mm:ss", 0 , { trim: false });
 		}
 	}
 
