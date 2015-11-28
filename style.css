@@ -6,8 +6,8 @@
 }
 
 .resizeGrip {
-	background: lightblue;
-	border: 1px solid blue;
+	background: grey;
+	border: 1px solid grey;
 	position: absolute;
 }
 

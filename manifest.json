@@ -17,9 +17,8 @@
 				"file":"index.html",
 				"transparent":true,
 				"resizable":true,
-				"size":{"width":700, "height":300},
-				"min_size":{"width":700, "height":200},
-				"max_size":{"width":700, "height":500}
+				"size":{"width":700, "height":500},
+				"min_size":{"width":700, "height":200}
 			}
 		}
 	}
