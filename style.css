@@ -83,3 +83,15 @@
 	right: 0;
 	cursor: nwse-resize;
 }
+
+.table > thead > tr > th {
+	vertical-align: top;
+}
+
+table {
+	table-layout: fixed;
+}
+
+.ui-select-bootstrap > .ui-select-choices {
+	width: 250px;
+}

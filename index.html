@@ -20,11 +20,17 @@
 		<div class="resizeGrip" id="resizeGripBottomLeft" onmousedown="dragResize('BottomLeft');"></div>
 		<div class="resizeGrip" id="resizeGripLeft" onmousedown="dragResize('Left');"></div>
 		<div id="content" onmousedown="dragMove();">
-			<table class="table">
+			<table class="table table-condensed">
 				<thead>
 					<tr>
+						<th>Name</th>
+						<th>Location</th>
+						<th>Rank</th>
+						<th>Status</th>
+						<th>Time</th>
+					</tr>
+					<tr>
 						<th>
-							Name
 							<div class="has-feedback" ng-init="vm.input.name = ''">
 								<input type="text" class="form-control" ng-model="vm.input.name" ng-change="vm.resetFilters()">
 							    <a 
@@ -35,12 +41,10 @@
 							</div>
 						</th>
 						<th>
-							Location
 							<ui-select
 								theme="bootstrap"
 								ng-model="vm.input.area"
-								search-enabled="false"
-								style="width: 300px;">
+								search-enabled="false">
 								<ui-select-match
 									allow-clear="true"
 									placeholder="All">
@@ -72,7 +76,13 @@
 				</thead>
 				{{ vm.input | json }}
 				<tbody>
-					<tr ng-repeat="hunt in vm.hunts | filter:vm.input:strict ">
+					<tr 
+						ng-repeat="hunt in vm.hunts | filter:vm.input:strict "
+						ng-class="{
+							success: hunt.type=='open',
+							danger: hunt.type=='awaiting',
+							info: hunt.type=='no info'
+						}">
 						<td>{{ hunt.name }}</td>
 						<td>{{ hunt.area | shortName }}</td>
 						<td>{{ hunt.rank }}</td>
