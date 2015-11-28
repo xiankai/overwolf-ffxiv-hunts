@@ -29,6 +29,7 @@ function closeWindow(){
 	angular
 	.module('overwolf', ['ui.bootstrap', 'ui.select'])
 	.filter('moment', MomentFilter)
+	.filter('shortName', ShortNameFilter)
 	.controller('table', Controller)
 
 	Controller.$inject = ['$http', '$interval'];
@@ -53,9 +54,11 @@ function closeWindow(){
 			if (method === 'iterative') {
 				for (var region in locationMap[method]) {
 					for (var area in locationMap[method][region]) {
+						var name = locationMap[method][region][area] + ' ' + region;
 						vm.locations.push({
-							name: locationMap[method][region][area] + ' ' + region,
-							region: region
+							name: name,
+							region: region,
+							short: shortName(name)
 						});
 					}
 				}
@@ -64,9 +67,11 @@ function closeWindow(){
 			if (method === 'declarative') {
 				for (var region in locationMap[method]) {
 					for (var area in locationMap[method][region]) {
+						var name = locationMap[method][region][area];
 						vm.locations.push({
-							name: locationMap[method][region][area],
-							region: region
+							name: name,
+							region: region,
+							short: shortName(name)
 						});
 					}
 				}
@@ -176,6 +181,14 @@ function closeWindow(){
 			return moment.utc(duration.asMilliseconds()).format("HH:mm:ss");
 		}
 	}
-	
+
+	function shortName(string) {
+		matches = string.match(/\b(\w)/g);
+		return matches.join('');
+	}
+
+	function ShortNameFilter() {
+		return shortName
+	}
 })();
 

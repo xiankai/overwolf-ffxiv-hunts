@@ -44,44 +44,37 @@
 								<ui-select-match
 									allow-clear="true"
 									placeholder="All">
-							        <span ng-bind="$select.selected.value.name"></span>
+							        <span ng-bind="$select.selected.value.short"></span>
 								</ui-select-match>
 								<ui-select-choices 
 									repeat="location.value.name as (key, location) in vm.locations"
 									group-by="vm.locationGroupFn">
-									<div>{{ location.value.name }}</div>
+									<div>{{ location.value.name }} ( {{ location.value.short }} )</div>
 								</ui-select-choices>
 							</ui-select>
 						</th>
 						<th>
-							Rank
-							<div>
-							    <div class="btn-group" ng-init="vm.input.rank = ''">
-							        <label class="btn btn-default" ng-model="vm.input.rank" uib-btn-radio="''">All</label>
-							        <label class="btn btn-primary" ng-model="vm.input.rank" uib-btn-radio="'A'">A</label>
-							        <label class="btn btn-success" ng-model="vm.input.rank" uib-btn-radio="'S'">S</label>
-							    </div>
-							</div>
+						    <div class="btn-group" ng-init="vm.input.rank = ''">
+						        <label class="btn btn-default" ng-model="vm.input.rank" uib-btn-radio="''">All</label>
+						        <label class="btn btn-primary" ng-model="vm.input.rank" uib-btn-radio="'A'">A</label>
+						        <label class="btn btn-success" ng-model="vm.input.rank" uib-btn-radio="'S'">S</label>
+						    </div>
 						</th>
-						<th>
-							Status
-							<div>
-							    <div class="btn-group" ng-init="vm.input.type = ''">
-							        <label class="btn btn-default" ng-model="vm.input.type" uib-btn-radio="''">All</label>
-							        <label class="btn btn-danger" ng-model="vm.input.type" uib-btn-radio="'awaiting'">Awaiting</label>
-							        <label class="btn btn-success" ng-model="vm.input.type" uib-btn-radio="'open'">Open</label>
-							        <label class="btn btn-info" ng-model="vm.input.type" uib-btn-radio="'no info'">No Info</label>
-							    </div>
-							</div>
+						<th colspan="2">
+						    <div class="btn-group" ng-init="vm.input.type = ''">
+						        <label class="btn btn-default" ng-model="vm.input.type" uib-btn-radio="''">All</label>
+						        <label class="btn btn-danger" ng-model="vm.input.type" uib-btn-radio="'awaiting'">Awaiting</label>
+						        <label class="btn btn-success" ng-model="vm.input.type" uib-btn-radio="'open'">Open</label>
+						        <label class="btn btn-info" ng-model="vm.input.type" uib-btn-radio="'no info'">No Info</label>
+						    </div>
 						</th>
-						<th>Time</th>
 					</tr>
 				</thead>
 				{{ vm.input | json }}
 				<tbody>
 					<tr ng-repeat="hunt in vm.hunts | filter:vm.input:strict ">
 						<td>{{ hunt.name }}</td>
-						<td>{{ hunt.area }}</td>
+						<td>{{ hunt.area | shortName }}</td>
 						<td>{{ hunt.rank }}</td>
 						<td>{{ hunt.type }}</td>
 						<td>{{ hunt.time | moment }}</td>
