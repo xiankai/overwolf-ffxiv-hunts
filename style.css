@@ -95,3 +95,11 @@ table {
 .ui-select-bootstrap > .ui-select-choices {
 	width: 250px;
 }
+
+#close-icon {
+	position: fixed;
+	top: 7px;
+	right: 25px;
+	padding: 10px;
+	cursor: pointer;
+}
