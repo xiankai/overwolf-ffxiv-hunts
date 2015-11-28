@@ -6,9 +6,9 @@
 		"version":"1.0.0",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Lima",
-		"icon":"IconMouseOver.png",
-		"icon_gray":"IconMouseNormal.png",
-		"description":"Tracking hunts from ffxivhunt.com"
+		"icon":"icon.png",
+		"icon_gray":"icon.png",
+		"description":"Tracking hunts from ffxivhunt.com for Jenova"
 	},
 	"data": {
 		"start_window":"MainWindow",
