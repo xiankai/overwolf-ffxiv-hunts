@@ -19,10 +19,10 @@
 		<div class="resizeGrip" id="resizeGripBottom" onmousedown="dragResize('Bottom');"></div>
 		<div class="resizeGrip" id="resizeGripBottomLeft" onmousedown="dragResize('BottomLeft');"></div>
 		<div class="resizeGrip" id="resizeGripLeft" onmousedown="dragResize('Left');"></div>
-		<div id="content" onmousedown="dragMove();">
+		<div id="content">
 			<table class="table table-condensed">
 				<thead>
-					<tr>
+					<tr onmousedown="dragMove();">
 						<th>Name</th>
 						<th>Location</th>
 						<th>Rank</th>
@@ -74,7 +74,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody onmousedown="dragMove();">
 					<tr 
 						ng-repeat="hunt in vm.hunts | filter:vm.input:strict "
 						ng-class="{
