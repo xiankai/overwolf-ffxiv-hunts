@@ -44,7 +44,7 @@ function closeWindow(){
 			},
 			'declarative': {
 				'Coerthas': ['Coerthas Western Highlands', 'Coerthas Central Highlands'],
-				'Dravania': ['The Dravanian Forelands', 'The Dravanian Hinterlands', 'The Churning Mists'],
+				'Dravania': ['Dravanian Forelands', 'Dravanian Hinterlands', 'Churning Mists'],
 				'Abalathia\'s Spine': ['The Sea of Clouds', 'Azys Lla']
 			}
 		};
