@@ -17,7 +17,7 @@
 	bottom: 10px;
 	left: 10px;
 	right: 10px;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 #resizeGripTop {
